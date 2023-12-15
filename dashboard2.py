@@ -29,12 +29,12 @@ if fl is not None:
     df = pd.read_csv(fileName, encoding="ISO-8859-1")
 else:
     os.chdir(r"C:\Users\saakar\Desktop\Projects\Data_Mining\Mini_project\Dashboard/Assets")
-    df = pd.read_csv("covid-19_cases.csv", encoding="ISO-8859-1")
+    df = pd.read_csv("covid-19_activity.csv", encoding="ISO-8859-1")
 
 # Date input with column ######################################
 col1, col2 = st.columns((2))
 # # df = filter_date(df.copy())
-df["Date"] = pd.to_datetime(df["Date"]) 
+df["Date"] = pd.to_datetime(df["Date"])
 
 # Get the min and max date
 startDate = pd.to_datetime(df["Date"]).min()
@@ -44,7 +44,7 @@ with col1:
     date1 = pd.to_datetime(st.date_input("Start Date", startDate))
 
 with col2:
-    date2 = pd.to_datetime(st.date_input("End Date", endDate))
+    date2 = pd.to_datetime(st.date_input("End Date", endDate))pip
 
 
 # Logic for start date & end date#
@@ -62,35 +62,3 @@ with col2:
 
 
 create_country_bar_chart(filtered_df)
-
-### time series plot ##
-# st.title("Time Series Plot with Streamlit")
-# y_column = st.selectbox("Select Y-axis Column:",df.columns)
-# try:
-#     df[y_column]=pd.to_numeric(df[y_column])
-# except (ValueError,TypeError):
-#     st.warning(f"Column '{y_column}' contains mixed or incompatible types.Plz  Select another column")
-
-# x_column=st.selectbox("Select X-axis Column:",df.columns)
-# st.line_chart(df.set_index('Date'))
-
-def plot_time_series(df):
-    st.title("Time Series Plot with Streamlit")
-
-    # Select y-axis column
-    y_column = st.selectbox("Select Y-axis Column:", df.columns)
-
-    # Attempt to convert the selected y-axis column to numeric
-    try:
-        df[y_column] = pd.to_numeric(df[y_column])
-    except (ValueError, TypeError):
-        st.warning(f"Column '{y_column}' contains mixed or incompatible types. Please select another column.")
-        return
-
-    # Select x-axis column (assuming it's 'Date' in this case)
-    x_column = st.selectbox("Select X-axis Column:", df.columns)
-
-    # Display time series plot
-    st.line_chart(df.set_index(x_column)[y_column])
-
-plot_time_series(df)
