@@ -23,8 +23,10 @@ if fl is not None:
     st.write(fileName)
     df = pd.read_csv(fileName, encoding="ISO-8859-1")
 else:
-    os.chdir(r"C:\Users\DELL\Documents\DevelopmentFiles\Data-Visualization\assets")
-    df = pd.read_csv("superstore.csv", encoding="ISO-8859-1")
+    os.chdir(r"C:\Users\saakar\Desktop\Projects\Data_Mining\Mini_project\Dashboard/Assets")
+    # df = pd.read_csv("Superstore.csv", encoding="ISO-8859-1")
+    df = pd.read_excel("Superstore.csv", encoding="ISO-8859-1")
+
 
 col1, col2 = st.columns((2))
 df["Order Date"] = pd.to_datetime(df["Order Date"])
