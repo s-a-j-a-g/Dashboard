@@ -57,7 +57,7 @@ import plotly.express as px
 
 def total_cases(filtered_df):
     # Pie chart for case distribution by province/state
-    st.subheader(f"Case Distribution")
+    st.subheader("Confirmed Cases Distribution by Country")
 
     # Group by and sum the cases for each province/state
     totalCases = pd.DataFrame(

@@ -4,7 +4,7 @@ import plotly.express as px
 
 def population_vs_cases(filtered_df):
     # Scatter plot for Population vs. Cases
-    st.subheader(f"Population vs. Confirmed Cases")
+    st.subheader(f"Population Vs. Confirmed Cases")
 
     subsampled_df = filtered_df.sample(n=min(1000, len(filtered_df)))
 
@@ -12,7 +12,7 @@ def population_vs_cases(filtered_df):
         subsampled_df,
         x="Population_Count",
         y="Cases",
-        text="Combined_Key",
+        # text="Combined_Key",
         log_x=True,
         log_y=True,
         # title="Population vs. Confirmed Cases",

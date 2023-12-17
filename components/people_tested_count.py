@@ -5,8 +5,12 @@ import plotly.express as px
 def people_tested_count(filtered_df):
     st.subheader("People Total Tested Count")
 
+    n = 10  # Adjust this value based on your needs
+    downsampled_df = filtered_df.iloc[::n, :]
+
     fig = px.bar(
-        filtered_df,
+        # filtered_df,
+        downsampled_df,
         x="Date",
         y="People_Total_Tested_Count",
         labels={"People_Total_Tested_Count": "Total People Tested", "Date": "Date"},

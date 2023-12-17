@@ -26,7 +26,7 @@ def create_country_bar_chart(filtered_df):
         filtered_country_df["Country_Region"].isin(top_10_countries)
     ]
 
-    st.subheader("Top 10 Country-wise Confirmed and Death Cases")
+    st.subheader("Top 10 Country: Confirmed and Death Cases")
     fig = px.bar(
         filtered_country_df_top10,
         x="Country_Region",

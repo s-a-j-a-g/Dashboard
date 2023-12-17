@@ -8,11 +8,9 @@ from components.daily_sum import daily_sum
 from components.geospatial_vizualization import geospatial_visualizer
 from components.people_tested_count import people_tested_count
 from components.total_cases import total_cases
-from components.visualize_admin_subdivisions import visualize_admin_subdivisions
 from components.population_vs_cases import population_vs_cases
 from components.daily_difference import daily_difference
 from components.hospitalization_rates import hospitalization_rates
-from components.plot_time_series import plot_time_series
 
 
 warnings.filterwarnings("ignore")
@@ -51,7 +49,7 @@ if fl is not None:
 else:
     os.chdir(r"C:\Users\DELL\Documents\DevelopmentFiles\Data-Visualization\assets")
     # os.chdir(r"C:\Users\saakar\Desktop\Projects\Data_Mining\Mini_project\Dashboard/Assets")
-    df = pd.read_csv("covid-19_cases_copy.csv", encoding="ISO-8859-1")
+    df = pd.read_csv("covid-19_cases.csv", encoding="ISO-8859-1")
 #########################################################
 
 
@@ -96,12 +94,10 @@ with col2:
 #########################################################
 daily_sum(filtered_df)
 create_country_bar_chart(filtered_df)
-people_tested_count(filtered_df)
+# people_tested_count(filtered_df)
 geospatial_visualizer(filtered_df)
-visualize_admin_subdivisions(filtered_df)
-# population_vs_cases(filtered_df)
-# hospitalization_rates(filtered_df)
-# plot_time_series(filtered_df)
+population_vs_cases(filtered_df)
+hospitalization_rates(filtered_df)
 #########################################################
 #########################################################
 #########################################################
@@ -118,6 +114,7 @@ with col1:
 filtered_df = df[df["Country_Region"] == selected_region]
 
 daily_difference(filtered_df)
+# hospitalization_rates(filtered_df)
 # total_cases(filtered_df)
 #########################################################
 #########################################################
