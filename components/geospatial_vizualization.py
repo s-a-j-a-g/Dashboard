@@ -6,16 +6,20 @@ import pandas as pd
 def geospatial_visualizer(filtered_df):
     st.subheader("Geospatial Distribution of Confirmed Cases")
 
-    filtered_df = filtered_df.head(1000)
+    # filtered_df = filtered_df.head(25000)
 
-    # totalCases = pd.DataFrame(
-    #     filtered_df.groupby("Country_Region")["Cases"].sum()
-    # ).reset_index()
-
-    # totalCases_subset = totalCases.head(100)
+    sample_size = st.slider(
+        "Select Sample Size",
+        min_value=10000,
+        # max_value=len(filtered_df),
+        max_value=30000,
+        value=12000,
+    )
+    sampled_data = filtered_df.sample(sample_size)
 
     fig = px.scatter_geo(
-        filtered_df,
+        sampled_data,
+        # filtered_df,
         lat="Lat",
         lon="Long",
         hover_name="Combined_Key",
@@ -37,3 +41,12 @@ def geospatial_visualizer(filtered_df):
 
     # Display the map
     st.plotly_chart(fig, use_container_width=True)
+
+
+# filtered_df = filtered_df.head(1000)
+
+# totalCases = pd.DataFrame(
+#     filtered_df.groupby("Country_Region")["Cases"].sum()
+# ).reset_index()
+
+# totalCases_subset = totalCases.head(100)

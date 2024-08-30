@@ -18,10 +18,10 @@ def create_country_bar_chart(filtered_df):
         filtered_country_df.groupby("Country_Region")["Cases"].sum().reset_index()
     )
 
-    # Get the top 20 countries based on the total sum of cases
+    # Get the top 10 countries based on the total sum of cases
     top_10_countries = country_totals.nlargest(10, "Cases")["Country_Region"].tolist()
 
-    # Filter the data for the top 20 countries
+    # Filter the data for the top 10 countries
     filtered_country_df_top10 = filtered_country_df[
         filtered_country_df["Country_Region"].isin(top_10_countries)
     ]

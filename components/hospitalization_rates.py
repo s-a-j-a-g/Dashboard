@@ -4,7 +4,8 @@ import pandas as pd
 
 
 def hospitalization_rates(filtered_df):
-    st.subheader("Cumulative Hospitalization Count Over Time")
+    # st.subheader("Cumulative Hospitalization Count Over Time")
+    st.subheader("Hospitalization Count Over Time")
 
     filtered_df["Date"] = pd.to_datetime(filtered_df["Date"])
 
@@ -31,7 +32,7 @@ def hospitalization_rates(filtered_df):
     # Customize the layout if needed
     fig2.update_layout(
         xaxis_title="Day",
-        yaxis_title="Sum of Cases",
+        yaxis_title="Hospitalized Population",
     )
 
     # Display the line chart using Streamlit
